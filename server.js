@@ -10,13 +10,14 @@ app.use(express.urlencoded({
 
 app.post('/sign-up', (req, res) => {
   const { fName, lName, email, subscribe } = req.body;
-  subscribe ?
+  if(subscribe) {
     res.write(`Hello ${fName} ${lName}, 
     Thank you for signing up. Your account is now created.
     You would be receiving our periodic newsletters to your email: ${email}`)
-    :
+  } else {
     res.write(`Hello ${fName} ${lName},
      Thank you for signing up. Your account is now created`)
+  }
   res.end();
 })
 
